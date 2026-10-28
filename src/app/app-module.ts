@@ -6,11 +6,17 @@ import { LoginComponent } from './components/login-component/login-component';
 import { MenuComponent } from './components/menu-component/menu-component';
 import { PerfilComponent } from './components/perfil-component/perfil-component';
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
+import { provideHttpClient } from '@angular/common/http';
+import { serviceEmpleados } from './services/service.empleados';
 
 @NgModule({
   declarations: [App, LoginComponent, MenuComponent, PerfilComponent, SubordinadosComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [provideBrowserGlobalErrorListeners()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+    serviceEmpleados
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
