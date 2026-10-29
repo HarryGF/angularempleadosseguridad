@@ -1,2 +1,12 @@
-<h1>Mi perfil</h1>
-<button (click)="cargarPerfil()">Cargar perfil</button>
+<h1>Mi Perfil</h1>
+
+<div *ngIf="empleado" class="card mt-3" style="width: 22rem;">
+    <div class="card-body">
+        <h3 class="card-title text-primary">{{empleado.apellido}}</h3>
+        <hr />
+        <p class="card-text"><strong>ID Empleado:</strong> {{empleado.idEmpleado}}</p>
+        <p class="card-text"><strong>Oficio:</strong> {{empleado.oficio}}</p>
+        <p class="card-text"><strong>Salario:</strong> {{empleado.salario}} €</p>
+        <p class="card-text"><strong>ID Director:</strong> {{empleado.director}}</p>
+    </div>
+</div>

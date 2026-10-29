@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../../environments/environment.development";
 import { firstValueFrom } from "rxjs";
 import { Usuario } from "../models/usuario";
+import { Empleado } from "../models/empleado";
 
 @Injectable()
 export class serviceEmpleados {
@@ -19,5 +20,27 @@ export class serviceEmpleados {
 
     getToken(): string | null {
         return sessionStorage.getItem('accessToken')
+    }
+
+    async getPerfilEmpleado(): Promise<Empleado> {
+        let token = this.getToken();
+        
+        let header = new HttpHeaders().set("Authorization", "Bearer " + token);
+        let request = "api/Empleados/PerfilEmpleado";
+
+        return firstValueFrom(
+            this._http.get<Empleado>(this.url + request, {headers: header})
+        )
+    }
+
+    async getSubordinados(): Promise<Empleado[]> {
+        let token = this.getToken()
+        
+        let header = new HttpHeaders().set("Authorization", "Bearer " + token)
+        let request = "/api/Empleados/Subordinados"
+
+        return firstValueFrom(
+            this._http.get<Empleado[]>(this.url + request, {headers: header})
+        )
     }
 }
