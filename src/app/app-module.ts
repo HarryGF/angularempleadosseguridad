@@ -8,11 +8,13 @@ import { PerfilComponent } from './components/perfil-component/perfil-component'
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 import { provideHttpClient } from '@angular/common/http';
 import { serviceEmpleados } from './services/service.empleados';
+import { AuthGuard } from './guards/auth-guard';
 
 @NgModule({
   declarations: [App, LoginComponent, MenuComponent, PerfilComponent, SubordinadosComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
+    AuthGuard,
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     serviceEmpleados

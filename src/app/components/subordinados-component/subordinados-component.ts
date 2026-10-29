@@ -19,9 +19,6 @@ export class SubordinadosComponent  implements OnInit{
   ){} 
 
   async ngOnInit(): Promise<void> {
-    if(!sessionStorage.getItem('accessToken')){
-      this._router.navigate(['/'])
-    }
     this.listaSubordinados = await this._service.getSubordinados()
     this._cdr.detectChanges()
   }

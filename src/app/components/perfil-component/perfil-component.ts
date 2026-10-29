@@ -19,9 +19,6 @@ export class PerfilComponent implements OnInit{
   ){} 
 
   async ngOnInit(): Promise<void>{
-    if(!sessionStorage.getItem('accessToken')){
-      this._router.navigate(['/'])
-    }
     this.empleado = await this._service.getPerfilEmpleado()
     this._cdr.detectChanges()
   }

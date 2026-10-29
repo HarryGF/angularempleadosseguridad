@@ -12,7 +12,9 @@ export class AuthGuard implements CanActivate {
     if(sessionStorage.getItem('accessToken')) {
       return true
     } else {
-      return false
+      return this._router.createUrlTree(['/'],
+        {queryParams: {returnUrl: state.url}}
+      )
     }
   }
 }
