@@ -15,6 +15,21 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" [routerLink]="['/empleados']">Subordinados</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/signal']">Signal</a>
+        </li>
+        <!-- <h1 style="color:fuchsia">
+          Contador: {{contador()}}
+        </h1> -->
+        @if (usuario(); as dato) {
+          <h1 style="color:blue">
+            {{dato.apellido}}
+          </h1>
+        } @else {
+          <h1 style="color:red">
+            Sin login
+          </h1>
+        }
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

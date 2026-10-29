@@ -8,16 +8,23 @@ import { PerfilComponent } from './components/perfil-component/perfil-component'
 import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 import { provideHttpClient } from '@angular/common/http';
 import { serviceEmpleados } from './services/service.empleados';
-import { AuthGuard } from './guards/auth-guard';
+import { authGuard } from './guards/auth-guard';
+import { EjemploSignalComponent } from './components/ejemplo-signal-component/ejemplo-signal-component';
 
 @NgModule({
-  declarations: [App, LoginComponent, MenuComponent, PerfilComponent, SubordinadosComponent],
+  declarations: [
+    App,
+    LoginComponent,
+    MenuComponent,
+    PerfilComponent,
+    SubordinadosComponent,
+    EjemploSignalComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
-    AuthGuard,
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    serviceEmpleados
+    serviceEmpleados,
   ],
   bootstrap: [App],
 })

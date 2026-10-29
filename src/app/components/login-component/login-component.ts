@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { serviceEmpleados } from '../../services/service.empleados';
 import { Usuario } from '../../models/usuario';
+import { ServiceAuthEmpleados } from '../../services/service.auth.empleados';
 
 @Component({
   selector: 'app-login-component',
@@ -16,7 +17,8 @@ export class LoginComponent {
 
   constructor( 
     private _cdr: ChangeDetectorRef,
-    private _service: serviceEmpleados
+    private _service: serviceEmpleados,
+    private _serviceAuth: ServiceAuthEmpleados
   ){} 
 
   async login(): Promise<void> {
@@ -26,7 +28,7 @@ export class LoginComponent {
 
     let response = await this._service.login(usuario)
     this.mensaje = "Sesión iniciada correctamente"
-
+    await this._serviceAuth.logInEmpleadoAsync(response.response)
     this._cdr.detectChanges()
   }
 }
